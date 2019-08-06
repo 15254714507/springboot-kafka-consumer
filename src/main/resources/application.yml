@@ -1,0 +1,12 @@
+server:
+  port: 8081
+spring:
+  kafka:      
+    bootstrap-servers: 192.168.137.130:9093   #kafka的IP:端口，可以多个
+    template:
+      default-topic: my-replicated-topic  #kafka默认主题
+    listener:             #指定listen容器中的线程数，用于提高并发量
+      concurrency: 5  
+    consumer:
+      group-id: mygroup      #指定默认消费者group id
+      auto-offset-reset: earliest  #最早未被消费的offset    
